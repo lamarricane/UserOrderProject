@@ -1,16 +1,16 @@
 services:
   db:
     image: postgres:15
-    container_name: postgres_cont
+    container_name: postgres_cont_user_order
     environment:
-      POSTGRES_USER: username
-      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Pivo
       POSTGRES_DB: user_order_db
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      #- ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    #  - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready -U postgres -d user_order_db" ]
       interval: 5s
@@ -21,11 +21,11 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: back_cont
+    container_name: back_cont_user_order
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/user_order_db
-      SPRING_DATASOURCE_USERNAME: username
-      SPRING_DATASOURCE_PASSWORD: password
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: Pivo
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
     ports:
       - "8080:8080"

@@ -1,7 +1,6 @@
 package com.example.service;
 
 import com.example.UserOrderApplication;
-import com.example.controller.UserController;
 import com.example.model.User;
 import com.example.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -20,9 +19,7 @@ import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-@SpringBootTest(classes = {UserOrderApplication.class, UserService.class})
-@ActiveProfiles("test")
-public class UserServiceTest {
+class UserServiceTest {
 
     @Mock
     private UserRepository userRepository;
