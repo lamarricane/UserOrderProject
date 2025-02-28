@@ -1,7 +1,7 @@
 package com.example.controller;
 
 import com.example.model.User;
-import com.example.server.UserService;
+import com.example.service.UserService;
 import com.example.view.Views;
 import com.fasterxml.jackson.annotation.JsonView;
 import jakarta.validation.Valid;
